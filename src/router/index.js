@@ -5,6 +5,7 @@ import {
 import Home from '../views/Home.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 import CartDetails from '../views/CartDetails.vue'
+import test from '../views/test.vue'
 
 const routes = [{
     path: '/',
@@ -20,17 +21,11 @@ const routes = [{
     path: '/cartDetails',
     name: 'CartDetails',
     component: CartDetails
+  }, {
+    path: '/test',
+    name: 'test',
+    component: test
   },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('../views/Login.vue')
-  }
-  // {
-  //   path: '/signup',
-  //   name: 'SignUp',
-  //   component: () => import('../views/SignUp.vue')
-  // },
 ]
 
 const router = createRouter({
