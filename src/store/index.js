@@ -6,13 +6,14 @@ import {
 export default createStore({
   state: {
     products: [],
-    card: []
+    cart: [],
+    items: 0
   },
   mutations: {
     getProducts(state, products) {
       state.products = products
       console.log(state.products)
-    }
+    },
   },
   actions: {
     getProductsAction({

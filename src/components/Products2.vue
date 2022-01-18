@@ -178,23 +178,23 @@ export default {
   methods: {
     addToCart(product) {
       // check if already on array
-      for (let i = 0; i < this.$store.state.card.length; i++) {
-        if (this.$store.state.card[i].id == product.id) {
-          return this.$store.state.card[i].quantity++;
+      for (let i = 0; i < this.$store.state.cart.length; i++) {
+        if (this.$store.state.cart[i].id == product.id) {
+          return this.$store.state.cart[i].quantity++;
         }
       }
-      return this.$store.state.card.push(product);
+      return this.$store.state.cart.push(product);
     },
 
     cartPlusOne(product) {
-      this.$store.state.card.quantity = this.$store.state.card.quantity + 1;
+      this.$store.state.cart.quantity = this.$store.state.cart.quantity + 1;
     },
 
     cartMinusOne(product, id) {
-      if (this.$store.state.card.quantity == 1) {
-        this.$store.state.card.cartRemoveItem(id);
+      if (this.$store.state.cart.quantity == 1) {
+        this.$store.state.cart.cartRemoveItem(id);
       } else {
-        this.$store.state.card.quantity = this.$store.state.card.quantity - 1;
+        this.$store.state.cart.quantity = this.$store.state.cart.quantity - 1;
       }
     },
     deleteCart() {

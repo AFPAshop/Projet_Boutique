@@ -1,7 +1,9 @@
 <template>
-  <Header />
-  <Products />
-  <!-- <Products2 /> -->
+  <div>
+    <Header />
+    <Products />
+    <!-- <Products2 /> -->
+  </div>
 </template>
 
 <script>

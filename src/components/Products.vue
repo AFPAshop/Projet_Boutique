@@ -147,10 +147,10 @@
                 </router-link>
                 <button
                   class="btn btn-success mt-2 btn-sm"
-                  @click="addToCard(product)"
+                  @click="addToCart(product)"
                 >
                   <i class="fas fa-cart-plus mx-1"></i>
-                  Add to Card
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -162,6 +162,7 @@
 </template>
 
 <script>
+import gsap from "gsap";
 export default {
   name: "Products",
   data() {
@@ -207,9 +208,11 @@ export default {
       });
       return [...new Set(arr)];
     },
+
     capitalized(data) {
       return data.charAt(0).toUpperCase() + data.slice(1);
     },
+
     sortProductsByPrice(products) {
       this.sortByRating = "";
       if (this.sortByPrice == "increasingOrder") {
@@ -218,6 +221,7 @@ export default {
         return products.sort((a, b) => b.price - a.price);
       }
     },
+
     sortProductsByRating(products) {
       this.sortByPrice = "";
       if (this.sortByRating == "increasingOrder") {
@@ -226,16 +230,42 @@ export default {
         return products.sort((a, b) => b.rating.rate - a.rating.rate);
       }
     },
-    addToCard(product) {
+
+    addToCart(product) {
       console.log(product);
-      console.log(this.$store.state.card);
-      for (let i = 0; i < this.$store.state.card.length; i++) {
-        if (this.$store.state.card[i].id == product.id) {
-          return this.$store.state.card[i].quantity++;
+      console.log(this.$store.state.cart);
+      for (let i = 0; i < this.$store.state.cart.length; i++) {
+        if (this.$store.state.cart[i].id == product.id) {
+          this.$store.state.items++;
+          return this.$store.state.cart[i].quantity++;
         }
       }
       product.quantity = 1;
-      return this.$store.state.card.push(product);
+      this.$store.state.items++;
+      return this.$store.state.cart.push(product);
+    },
+
+    beforeEnter(el) {
+      el.style.opacity = 0;
+      el.style.height = 0;
+    },
+
+    enter(el, done) {
+      gsap.to(el, {
+        opacity: 1,
+        height: "1.6em",
+        delay: el.dataset.index * 0.15,
+        onComplete: done,
+      });
+    },
+
+    leave(el, done) {
+      gsap.to(el, {
+        opacity: 0,
+        height: 0,
+        delay: el.dataset.index * 0.15,
+        onComplete: done,
+      });
     },
   },
 };

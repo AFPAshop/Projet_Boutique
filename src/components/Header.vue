@@ -24,10 +24,10 @@
           >
         </li>
       </ul>
-      <router-link to="/cardDetails" class="text-decoration-none">
+      <router-link to="CartDetails" class="text-decoration-none">
         <h2 class="text-white cursor">
-          <i class="fas fa-shopping-cart mx-1"></i>
-          {{ this.$store.state.card.length }}
+          <i style="color: #198754" class="fas fa-shopping-cart mx-1"></i>
+          {{ this.$store.state.items }}
         </h2>
       </router-link>
     </div>
@@ -42,7 +42,6 @@ export default {
       items: 0,
     };
   },
-  computed: {},
 };
 </script>
 
