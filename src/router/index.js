@@ -18,7 +18,17 @@ const routes = [
     path: '/cardDetails',
     name: 'CardDetails',
     component: CardDetails
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+  // {
+  //   path: '/signup',
+  //   name: 'SignUp',
+  //   component: () => import('../views/SignUp.vue')
+  // },
 ]
 
 const router = createRouter({

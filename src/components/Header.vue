@@ -30,6 +30,13 @@
           {{ this.$store.state.card.length }}
         </h2>
       </router-link>
+
+      <nav>
+      <ul>
+        <li><router-link to="/login">Login</router-link></li>
+        
+      </ul>
+    </nav>
     </div>
   </header>
 </template>
