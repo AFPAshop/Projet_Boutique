@@ -1,15 +1,33 @@
 <template>
-  <router-view/>
+  <router-view v-slot="{ Component }">
+    <transition name="route" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  created(){
-    this.$store.dispatch('getProductsAction')
-  }
-}
+  name: "App",
+  created() {
+    this.$store.dispatch("getProductsAction");
+  },
+};
 </script>
 
 <style lang="scss">
+.route-enter-from {
+  opacity: 0;
+  transform: translateX(100px);
+}
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+.route-leave-to {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
 </style>

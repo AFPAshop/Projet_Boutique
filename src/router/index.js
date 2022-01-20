@@ -1,7 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductDetails from '../views/ProductDetails.vue'
-import CardDetails from '../views/CardDetails.vue'
 import admin from '../views/admin_boutique.vue'
 import association from '../views/association.vue'
 import commande from '../views/commande.vue'
@@ -11,9 +13,11 @@ import logout from '../views/logout.vue'
 import produits from '../views/produits.vue'
 import stock from '../views/stock.vue'
 import tva from '../views/tva.vue'
+import CartDetails from '../views/CartDetails.vue'
+import test from '../views/test.vue'
+import SignUp from '../views/SignUp.vue'
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home
@@ -22,11 +26,6 @@ const routes = [
     path: '/product/:id',
     name: 'ProductDetails',
     component: ProductDetails
-  },
-  {
-    path: '/cardDetails',
-    name: 'CardDetails',
-    component: CardDetails
   },
   {
     path: '/admin',
@@ -73,9 +72,21 @@ const routes = [
     name: 'tva',
     component : tva
   }
-  
+    path: '/cartDetails',
+    name: 'CartDetails',
+    component: CartDetails
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: test
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
+  },
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

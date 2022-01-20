@@ -24,25 +24,33 @@
           >
         </li>
       </ul>
-      <router-link to="/cardDetails" class="text-decoration-none">
+      <router-link to="CartDetails" class="text-decoration-none">
         <h2 class="text-white cursor">
-          <i class="fas fa-shopping-cart mx-1"></i>
-          {{ this.$store.state.card.length }}
+          <i style="color: #198754" class="fas fa-shopping-cart mx-1"></i>
+          {{ this.$store.state.items }}
         </h2>
       </router-link>
+      <button
+        type="button"
+        class="btn btn-success"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Login
+      </button>
+      <Login />
     </div>
   </header>
 </template>
 
 <script>
+import Login from "./Login.vue";
 export default {
   name: "Header",
-  data() {
-    return {
-      items: 0,
-    };
-  },
-  computed: {},
+  components: { Login },
+  data() {},
+  mounted() {},
+  methods: {},
 };
 </script>
 
