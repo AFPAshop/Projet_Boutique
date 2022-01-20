@@ -4,17 +4,15 @@ import {
 } from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductDetails from '../views/ProductDetails.vue'
-import admin from '../views/admin_boutique.vue'
-import association from '../views/association.vue'
-import commande from '../views/commande.vue'
-import compteBoutique from '../views/compteBoutique.vue'
-import compteClient from '../views/compteClient.vue'
-import logout from '../views/logout.vue'
-import produits from '../views/produits.vue'
-import stock from '../views/stock.vue'
-import tva from '../views/tva.vue'
+import Admin from '../views/admin/DashBoard.vue'
+import Association from '../views/admin/Association.vue'
+import Commande from '../views/admin/Commande.vue'
+import CompteBoutique from '../views/admin/CompteBoutique.vue'
+import CompteClient from '../views/admin/CompteClient.vue'
+import Produits from '../views/admin/Produits.vue'
+import Stock from '../views/admin/Stock.vue'
+import Tva from '../views/admin/Tva.vue'
 import CartDetails from '../views/CartDetails.vue'
-import test from '../views/test.vue'
 import SignUp from '../views/SignUp.vue'
 
 const routes = [{
@@ -29,57 +27,48 @@ const routes = [{
   },
   {
     path: '/admin',
-    name: 'admin',
-    component : admin
+    name: 'Admin',
+    component: Admin
   },
   {
     path: '/admin/association',
-    name: 'association',
-    component : association
+    name: 'Association',
+    component: Association
   },
   {
     path: '/admin/commande',
-    name: 'commande',
-    component : commande
+    name: 'AdminCommande',
+    component: Commande
   },
   {
-    path: '/admin/compteBoutique',
-    name: 'compteBoutique',
-    component : compteBoutique
+    path: '/admin/compteboutique',
+    name: 'CompteBoutique',
+    component: CompteBoutique
   },
   {
-    path: '/admin/compteClient',
-    name: 'compteClient',
-    component : compteClient
-  },
-  {
-    path: '/admin/logout',
-    name: 'logout',
-    component : logout
+    path: '/admin/compteclient',
+    name: 'CompteClient',
+    component: CompteClient
   },
   {
     path: '/admin/produits',
-    name: 'produits',
-    component : produits
+    name: 'Produits',
+    component: Produits
   },
   {
     path: '/admin/stock',
-    name: 'stock',
-    component : stock
+    name: 'Stock',
+    component: Stock
   },
   {
     path: '/admin/tva',
-    name: 'tva',
-    component : tva
-  }
+    name: 'Tva',
+    component: Tva
+  },
+  {
     path: '/cartDetails',
     name: 'CartDetails',
     component: CartDetails
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: test
   },
   {
     path: '/signup',

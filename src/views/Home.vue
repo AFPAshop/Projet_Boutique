@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <Products />
   </div>
 </template>
@@ -11,7 +10,7 @@ import Products from "../components/Products.vue";
 
 export default {
   name: "Home",
-  components: { Header, Products },
+  components: { Products },
 };
 </script>
 

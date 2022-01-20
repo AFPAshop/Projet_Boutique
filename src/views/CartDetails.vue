@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div class="container-md my-5">
       <div v-if="$store.state.cart.length == 0">
         <div class="alert alert-danger shadow-sm" role="alert">
@@ -108,10 +107,8 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
 export default {
   name: "CartDetails",
-  components: { Header },
   data() {
     return {
       totalPrice: 0,

@@ -23,13 +23,29 @@
             >Categorie4</a
           >
         </li>
+        <!-- <li class="nav-item" v-if="Role == 'admin'">
+          <router-link to="/admin">
+            <a style="color: azure" class="nav-link active" href="#"
+              >Home Admin</a
+            >
+          </router-link>
+        </li> -->
       </ul>
-      <router-link to="CartDetails" class="text-decoration-none">
-        <h2 class="text-white cursor">
-          <i style="color: #198754" class="fas fa-shopping-cart mx-1"></i>
-          {{ this.$store.state.items }}
-        </h2>
-      </router-link>
+      <div>
+        <router-link to="CartDetails" class="text-decoration-none">
+          <h2 class="text-white cursor">
+            <i style="color: #198754" class="fas fa-shopping-cart mx-1"></i>
+            {{ this.$store.state.items }}
+          </h2>
+        </router-link>
+      </div>
+      <div>
+        <router-link to="/admin/compteboutique" class="text-decoration-none">
+          <h2 class="text-white cursor">
+            <i style="color: #198754" class="fas fa-user"></i>
+          </h2>
+        </router-link>
+      </div>
       <button
         type="button"
         class="btn btn-success"
@@ -38,6 +54,14 @@
       >
         Login
       </button>
+      <!-- <button        
+        type="button"
+        class="btn btn-success"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Logout
+      </button> -->
       <Login />
     </div>
   </header>
@@ -48,7 +72,9 @@ import Login from "./Login.vue";
 export default {
   name: "Header",
   components: { Login },
-  data() {},
+  data() {
+    return {};
+  },
   mounted() {},
   methods: {},
 };

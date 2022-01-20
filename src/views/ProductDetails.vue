@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div class="container-md mt-5">
       <div v-for="product in $store.state.products" :key="product.id">
         <div v-if="product.id == $route.params.id">
@@ -88,10 +87,8 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
 export default {
   name: "ProductDetails",
-  components: { Header },
   data() {
     return {};
   },

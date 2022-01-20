@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <router-view v-slot="{ Component }">
     <transition name="route" mode="out-in">
       <component :is="Component"></component>
@@ -7,7 +8,9 @@
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 export default {
+  components: { Header },
   name: "App",
   created() {
     this.$store.dispatch("getProductsAction");
