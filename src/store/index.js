@@ -22,6 +22,9 @@ export default createStore({
       axios('https://fakestoreapi.com/products').then(res => {
         commit('getProducts', res.data)
       })
+      // axios.get('http://localhost:1337/api/products').then(res => {
+      //   commit('getProducts', res.data)
+      // })
     }
   },
   modules: {}

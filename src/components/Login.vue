@@ -29,10 +29,51 @@
                   >
                     <div class="card-body p-5 text-center">
                       <div class="mb-md-0 mt-md-4 pb-1">
-                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                        <p class="text-white-50 mb-5">
+                        <h2
+                          v-if="affiche == 'login'"
+                          class="fw-bold mb-2 text-uppercase"
+                        >
+                          Login
+                        </h2>
+                        <h2
+                          v-if="affiche == 'signup'"
+                          class="fw-bold mb-2 text-uppercase"
+                        >
+                          Inscription
+                        </h2>
+                        <p v-if="affiche == 'login'" class="text-white-50 mb-5">
                           Entrer votre login et votre mot de passe !
                         </p>
+                        <p
+                          v-if="affiche == 'signup'"
+                          class="text-white-50 mb-5"
+                        >
+                          Merci de bien vouloir renseigner tous les champs !
+                        </p>
+                        <div
+                          v-if="affiche == 'signup'"
+                          class="form-outline form-white mb-4"
+                        >
+                          <input
+                            type="text"
+                            id="typeFirstNameX"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="typeEmailX"
+                            >Prénom</label
+                          >
+                        </div>
+                        <div
+                          v-if="affiche == 'signup'"
+                          class="form-outline form-white mb-4"
+                        >
+                          <input
+                            type="text"
+                            id="typeLastNameX"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="typeEmailX">Nom</label>
+                        </div>
 
                         <div class="form-outline form-white mb-4">
                           <input
@@ -54,29 +95,59 @@
                           <label class="form-label" for="typePasswordX"
                             >Mot de passe
                           </label>
+                          <span
+                            ><div class="password-icon">
+                              <i
+                                class="fa fa-eye"
+                                aria-hidden="true"
+                                id="eye"
+                                v-on:click="changer()"
+                              ></i></div
+                          ></span>
                         </div>
-                        <span
-                          ><div class="password-icon">
-                            <i
-                              class="fa fa-eye"
-                              aria-hidden="true"
-                              id="eye"
-                              v-on:click="changer()"
-                            ></i></div
-                        ></span>
+                        <div
+                          v-if="affiche == 'signup'"
+                          class="form-outline form-white mb-4"
+                        >
+                          <input
+                            type="password"
+                            id="typePasswordX2"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="typePasswordX"
+                            >Confirmation Mot de passe
+                          </label>
+                          <span
+                            ><div class="password-icon">
+                              <i
+                                class="fa fa-eye"
+                                id="eye2"
+                                v-on:click="changer2()"
+                              ></i></div
+                          ></span>
+                        </div>
 
-                        <p class="small mb-5 pb-lg-2">
+                        <p v-if="affiche == 'login'" class="small mb-5 pb-lg-2">
                           <a class="text-white-50" href="#!"
                             >Mot de passe oublié ?</a
                           >
                         </p>
                         <button
+                          v-if="affiche == 'login'"
                           class="btn btn-outline-light btn-lg px-5"
                           type="submit"
                         >
                           Login
                         </button>
+                        <button
+                          v-if="affiche == 'signup'"
+                          class="inscription btn btn-outline-light btn-lg px-5"
+                          type="submit"
+                        >
+                          Inscription
+                        </button>
                         <div
+                          v-if="affiche == 'login'"
                           class="
                             d-flex
                             justify-content-center
@@ -96,13 +167,24 @@
                           ></a>
                         </div>
                       </div>
-
-                      <div>
+                      <div v-if="affiche == 'login'">
                         <p class="mb-0">
                           Pas encore de compte ?
-                          <router-link class="link-signup" to="/signup"
+                          <!-- <router-link class="link-signup" to="/signup"
                             >Enregistrez-vous</router-link
+                          > -->
+                          <a href="#" @click="afficheSignUp"
+                            >Enregistrez-vous</a
                           >
+                        </p>
+                      </div>
+                      <div v-if="affiche == 'signup'">
+                        <p class="mb-0">
+                          Déjà un compte ?
+                          <!-- <router-link class="link-signup" to="/signup"
+                            >Enregistrez-vous</router-link
+                          > -->
+                          <a href="#" @click="afficheLogin">Connectez-vous</a>
                         </p>
                       </div>
                     </div>
@@ -123,6 +205,7 @@ export default {
   data() {
     return {
       e: true,
+      affiche: "login",
     };
   },
   mounted() {},
@@ -139,6 +222,27 @@ export default {
         document.getElementById("eye").setAttribute("class", "fa fa-eye");
         this.e = true;
       }
+    },
+    changer2() {
+      if (this.e == true) {
+        document.getElementById("typePasswordX2").setAttribute("type", "text");
+        document
+          .getElementById("eye2")
+          .setAttribute("class", "fa fa-eye-slash");
+        this.e = false;
+      } else {
+        document
+          .getElementById("typePasswordX2")
+          .setAttribute("type", "password");
+        document.getElementById("eye2").setAttribute("class", "fa fa-eye");
+        this.e = true;
+      }
+    },
+    afficheLogin() {
+      this.affiche = "login";
+    },
+    afficheSignUp() {
+      this.affiche = "signup";
     },
   },
 };
@@ -173,6 +277,6 @@ input:focus {
   color: white;
 }
 .password-icon {
-  margin-top: 25px;
+  margin-top: 0px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <div class="container">
+  <div id="app">    
+    <div class="container">      
       <router-link to="/admin/produits">
         <button class="btn btn-outline-success btn-lg px-5">Produits</button>
       </router-link>
@@ -26,7 +26,7 @@
       <router-link to="/admin/association">
         <button class="btn btn-outline-success btn-lg px-5">Association</button>
       </router-link>
-    </div>
+    </div>    
   </div>
 </template>
 
