@@ -55,6 +55,7 @@
                           class="form-outline form-white mb-4"
                         >
                           <input
+                            v-model="prenom"
                             type="text"
                             id="typeFirstNameX"
                             class="form-control form-control-lg"
@@ -68,6 +69,7 @@
                           class="form-outline form-white mb-4"
                         >
                           <input
+                            v-model="nom"
                             type="text"
                             id="typeLastNameX"
                             class="form-control form-control-lg"
@@ -77,6 +79,7 @@
 
                         <div class="form-outline form-white mb-4">
                           <input
+                            v-model="email"
                             type="email"
                             id="typeEmailX"
                             class="form-control form-control-lg"
@@ -87,6 +90,7 @@
                         </div>
                         <div class="form-outline form-white mb-4">
                           <input
+                            v-model="password"
                             type="password"
                             id="typePasswordX"
                             class="form-control form-control-lg"
@@ -141,6 +145,7 @@
                         </button>
                         <button
                           v-if="affiche == 'signup'"
+                          @click="signUp"
                           class="inscription btn btn-outline-light btn-lg px-5"
                           type="submit"
                         >
@@ -148,6 +153,7 @@
                         </button>
                         <div
                           v-if="affiche == 'login'"
+                          @click="login"
                           class="
                             d-flex
                             justify-content-center
@@ -200,16 +206,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Login",
   data() {
     return {
       e: true,
       affiche: "login",
+      email: "",
+      password: "",
+      nom: "",
+      prenom: "",
     };
   },
   mounted() {},
   methods: {
+    // modification du type pour l'input "password"
+    // et changement de la classe pour l'icone eye
     changer() {
       if (this.e == true) {
         document.getElementById("typePasswordX").setAttribute("type", "text");
@@ -223,6 +236,8 @@ export default {
         this.e = true;
       }
     },
+    // modification du type pour l'input (confirmation) "password"
+    // et changement de la classe pour l'icone eye
     changer2() {
       if (this.e == true) {
         document.getElementById("typePasswordX2").setAttribute("type", "text");
@@ -238,11 +253,47 @@ export default {
         this.e = true;
       }
     },
+    // affichage des composants pour le login
     afficheLogin() {
       this.affiche = "login";
     },
+    // affichage des composants pour le signup
     afficheSignUp() {
       this.affiche = "signup";
+    },
+    login() {
+      axios
+        .post(this.$store.state.url + "/auth/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => console.log(res.data))
+        .catch((err) => {
+          err;
+        });
+    },
+    signUp() {
+      axios
+        .post(
+          "http://localhost:1337/api/testusers",
+          {
+            data: {
+              nom: this.nom,
+              prenom: this.prenom,
+              email: this.email,
+              password: this.password,
+            },
+          },
+          {
+            header: {},
+          }
+        )
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          error;
+        });
     },
   },
 };

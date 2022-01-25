@@ -7,7 +7,8 @@ export default createStore({
   state: {
     products: [],
     cart: [],
-    items: 0
+    items: 0,
+    url: 'http://localhost/3000/api'
   },
   mutations: {
     getProducts(state, products) {
