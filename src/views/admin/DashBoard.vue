@@ -1,6 +1,6 @@
 <template>
-  <div id="app">    
-    <div class="container">      
+  <div id="app">
+    <div class="container">
       <router-link to="/admin/produits">
         <button class="btn btn-outline-success btn-lg px-5">Produits</button>
       </router-link>
@@ -26,7 +26,7 @@
       <router-link to="/admin/association">
         <button class="btn btn-outline-success btn-lg px-5">Association</button>
       </router-link>
-    </div>    
+    </div>
   </div>
 </template>
 
@@ -52,6 +52,13 @@ img {
 }
 .container {
   float: left;
-  width: 200px;
+  width: 550px;
+  display: flex;
+  flex-wrap: wrap;
+}
+button {
+  width: 240px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 </style>

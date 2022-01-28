@@ -55,8 +55,8 @@
                 <td>{{ product.title }}</td>
                 <td class="text-capitalize">{{ product.quantity }}</td>
                 <td>
-                  <i class="fas fa-euro-sign"></i>
                   {{ product.price.toFixed(2) }}
+                  <i class="fas fa-euro-sign"></i>
                 </td>
                 <td>
                   {{ (product.quantity * product.price).toFixed(2) }}

@@ -50,7 +50,7 @@
         type="button"
         class="btn btn-success"
         data-toggle="modal"
-        data-target="#exampleModal"
+        data-target="#loginModal"
       >
         Login
       </button>

@@ -3,7 +3,7 @@
     <!-- Modal -->
     <div
       class="modal fade bd-example-modal-lg"
-      id="exampleModal"
+      id="loginModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -75,6 +75,20 @@
                             class="form-control form-control-lg"
                           />
                           <label class="form-label" for="typeEmailX">Nom</label>
+                        </div>
+                        <div
+                          v-if="affiche == 'signup'"
+                          class="form-outline form-white mb-4"
+                        >
+                          <input
+                            v-model="tel"
+                            type="text"
+                            id="typeLastNameX"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="typeEmailX"
+                            >Téléphone</label
+                          >
                         </div>
 
                         <div class="form-outline form-white mb-4">
@@ -211,15 +225,18 @@ export default {
   name: "Login",
   data() {
     return {
+      role: [],
       e: true,
       affiche: "login",
       email: "",
       password: "",
       nom: "",
       prenom: "",
+      tel: "",
     };
   },
   mounted() {},
+
   methods: {
     // modification du type pour l'input "password"
     // et changement de la classe pour l'icone eye
@@ -267,7 +284,10 @@ export default {
           email: this.email,
           password: this.password,
         })
-        .then((res) => console.log(res.data))
+        .then((res) => {
+          console.log(res.data);
+          this.$router.push("/");
+        })
         .catch((err) => {
           err;
         });
@@ -275,13 +295,14 @@ export default {
     signUp() {
       axios
         .post(
-          "http://localhost:1337/api/testusers",
+          this.$store.state.url + "/user/create",
           {
             data: {
               nom: this.nom,
               prenom: this.prenom,
               email: this.email,
               password: this.password,
+              tel: this.tel,
             },
           },
           {
@@ -294,6 +315,13 @@ export default {
         .catch(function (error) {
           error;
         });
+      this.email = "";
+      this.password = "";
+      this.tel = "";
+      this.prenom = "";
+      this.nom = "";
+      this.tel = "";
+      this.affiche = "login";
     },
   },
 };
